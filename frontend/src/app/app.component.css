@@ -1,0 +1,19 @@
+h1 {
+  margin-bottom: 16px;
+}
+.error {
+  color: #c53030;
+}
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.product-table th,
+.product-table td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
+.product-table th {
+  text-align: left;
+  background: #f8fafc;
+}

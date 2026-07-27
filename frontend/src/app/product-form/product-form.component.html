@@ -1,0 +1,43 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="row">
+    <label>Nombre</label>
+    <input formControlName="name" />
+    <div class="error" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+      El nombre es obligatorio.
+    </div>
+  </div>
+  <div class="row">
+    <label>Descripción</label>
+    <textarea formControlName="description"></textarea>
+  </div>
+  <div class="row">
+    <label>Categoría</label>
+    <input formControlName="category" />
+    <div class="error" *ngIf="form.get('category')?.invalid && form.get('category')?.touched">
+      La categoría es obligatoria.
+    </div>
+  </div>
+  <div class="row">
+    <label>Precio</label>
+    <input type="number" formControlName="price" />
+    <div class="error" *ngIf="form.get('price')?.invalid && form.get('price')?.touched">
+      El precio debe ser mayor a 0.
+    </div>
+  </div>
+  <div class="row">
+    <label>Stock</label>
+    <input type="number" formControlName="stock" />
+    <div class="error" *ngIf="form.get('stock')?.invalid && form.get('stock')?.touched">
+      El stock no puede ser negativo.
+    </div>
+  </div>
+  <div class="row checkbox-row">
+    <label>
+      <input type="checkbox" formControlName="active" /> Activo
+    </label>
+  </div>
+  <div class="button-row">
+    <button type="submit" [disabled]="saving">{{ isEditMode ? 'Actualizar' : 'Crear' }}</button>
+  </div>
+  <div class="message" *ngIf="message">{{ message }}</div>
+</form>

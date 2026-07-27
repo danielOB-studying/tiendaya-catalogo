@@ -1,0 +1,41 @@
+form {
+  display: grid;
+  gap: 12px;
+}
+.row {
+  display: flex;
+  flex-direction: column;
+}
+.row input,
+.row textarea {
+  padding: 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.textarea {
+  min-height: 80px;
+}
+.checkbox-row {
+  flex-direction: row;
+  align-items: center;
+}
+.button-row {
+  margin-top: 10px;
+}
+button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.message {
+  margin-top: 8px;
+  color: #2f855a;
+}
