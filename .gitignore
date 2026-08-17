@@ -19,6 +19,10 @@ frontend/node_modules/
 frontend/.angular/
 frontend/dist/
 frontend/tmp/
+frontendV2/node_modules/
+frontendV2/.angular/
+frontendV2/dist/
+frontendV2/tmp/
 
 # Angular cache files
 **/.angular/

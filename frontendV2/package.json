@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "clean": "rimraf dist",
+    "clean_modules": "rimraf node_modules",
+    "clean_all": "rimraf dist node_modules .angular",
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json --host 0.0.0.0 --port 4201",
     "build": "ng build --configuration production",
@@ -33,4 +36,5 @@
     "karma-jasmine": "^5.1.0",
     "typescript": "5.4.5"
   }
+  
 }
