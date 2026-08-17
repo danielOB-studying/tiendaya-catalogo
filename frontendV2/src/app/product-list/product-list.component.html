@@ -1,0 +1,81 @@
+<div class="app-container">
+  <mat-toolbar color="primary">
+    <span>Catálogo de productos</span>
+    <span class="spacer"></span>
+    <button mat-raised-button color="accent" (click)="goToNew()">
+      <mat-icon>add</mat-icon>
+      Nuevo producto
+    </button>
+  </mat-toolbar>
+
+  <div class="filter-row">
+    <mat-form-field appearance="outline">
+      <mat-label>Filtrar por categoría</mat-label>
+      <input matInput [(ngModel)]="categoryFilter" placeholder="Electrónica, Hogar..." (keyup.enter)="applyFilter()" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="applyFilter()">Filtrar</button>
+    <button mat-stroked-button (click)="clearFilter()">Limpiar</button>
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner diameter="48"></mat-spinner>
+    <p>Cargando productos...</p>
+  </div>
+  <div *ngIf="error && !loading" class="error">{{ error }}</div>
+
+  <mat-card *ngIf="!loading && !error">
+    <table mat-table [dataSource]="products" class="product-table">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let product">{{ product.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef>Categoría</th>
+        <td mat-cell *matCellDef="let product">{{ product.category }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Precio</th>
+        <td mat-cell *matCellDef="let product">{{ product.price | currency:'USD':'symbol':'1.0-0' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="stock">
+        <th mat-header-cell *matHeaderCellDef>Stock</th>
+        <td mat-cell *matCellDef="let product">{{ product.stock }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="lowStock">
+        <th mat-header-cell *matHeaderCellDef>Bajo stock</th>
+        <td mat-cell *matCellDef="let product">
+          <mat-chip *ngIf="product.lowStock" color="warn" selected>Sí</mat-chip>
+          <span *ngIf="!product.lowStock">No</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef>Activo</th>
+        <td mat-cell *matCellDef="let product">{{ product.active ? 'Sí' : 'No' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let product">
+          <button mat-icon-button color="primary" (click)="goToDetail(product)" matTooltip="Ver">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="goToEdit(product)" matTooltip="Editar">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteProduct(product)" matTooltip="Eliminar">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
+</div>

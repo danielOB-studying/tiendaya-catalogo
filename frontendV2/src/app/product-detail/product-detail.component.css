@@ -1,0 +1,31 @@
+.app-container {
+  padding: 16px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  gap: 12px;
+  color: #4a5568;
+}
+
+.detail-card {
+  margin-top: 20px;
+}
+
+.title-icon {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.error {
+  color: #c53030;
+  padding: 16px;
+}

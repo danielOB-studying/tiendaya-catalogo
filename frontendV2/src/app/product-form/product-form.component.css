@@ -1,0 +1,47 @@
+.app-container {
+  padding: 16px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-row mat-form-field {
+  flex: 1;
+}
+
+.active-checkbox {
+  margin: 8px 0;
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.inline-spinner {
+  display: inline-block;
+}
+
+.message {
+  margin-top: 8px;
+  color: #2f855a;
+}

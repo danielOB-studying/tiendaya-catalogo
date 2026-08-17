@@ -1,0 +1,34 @@
+.app-container {
+  padding: 16px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  gap: 12px;
+  color: #4a5568;
+}
+
+.product-table {
+  width: 100%;
+}
+
+.error {
+  color: #c53030;
+  padding: 16px;
+}

@@ -1,0 +1,70 @@
+<div class="app-container">
+  <mat-toolbar color="primary">
+    <span>{{ isEditMode ? 'Editar producto' : 'Nuevo producto' }}</span>
+    <span class="spacer"></span>
+    <button mat-stroked-button color="accent" (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+      Volver
+    </button>
+  </mat-toolbar>
+
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="submit()" class="product-form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="name" placeholder="Nombre del producto" />
+          <mat-error *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+            El nombre es obligatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput formControlName="description" rows="3" placeholder="Descripción del producto"></textarea>
+          <mat-error *ngIf="form.get('description')?.invalid && form.get('description')?.touched">
+            La descripción es obligatoria.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Categoría</mat-label>
+          <input matInput formControlName="category" placeholder="Electrónica, Hogar..." />
+          <mat-error *ngIf="form.get('category')?.invalid && form.get('category')?.touched">
+            La categoría es obligatoria.
+          </mat-error>
+        </mat-form-field>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Precio</mat-label>
+            <input matInput type="number" formControlName="price" />
+            <mat-error *ngIf="form.get('price')?.invalid && form.get('price')?.touched">
+              El precio debe ser mayor a 0.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Stock</mat-label>
+            <input matInput type="number" formControlName="stock" />
+            <mat-error *ngIf="form.get('stock')?.invalid && form.get('stock')?.touched">
+              El stock no puede ser negativo.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <mat-checkbox formControlName="active" class="active-checkbox">Activo</mat-checkbox>
+
+        <div class="button-row">
+          <button mat-raised-button color="primary" type="submit" [disabled]="saving || form.invalid">
+            <mat-icon>{{ isEditMode ? 'save' : 'add' }}</mat-icon>
+            {{ isEditMode ? 'Actualizar' : 'Crear' }}
+          </button>
+          <mat-spinner *ngIf="saving" diameter="24" class="inline-spinner"></mat-spinner>
+        </div>
+
+        <div class="message" *ngIf="message">{{ message }}</div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
